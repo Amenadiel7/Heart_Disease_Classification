@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+   <head>
+    {% load static %}
+    <link rel="stylesheet" href = "static\css1.css">
+      <title>
+         {% block title %}Heart Disease Predictor{% endblock %}
+      </title>
+    </head>
+  <body style="background-image: url('static/heart.jpg'); background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
+           <div class="formbold-main-wrapper">
+            <!-- Author: FormBold Team -->
+            <!-- Learn More: https://formbold.com -->
+            <div class="formbold-form-wrapper">
+              <center><h1 style="color:#2b4369;"> Welcome To Heart Disease Predictor</h1></center>
+              <img src="static/front1.png" style="height:400px;width:500px;">
+      <form action="/result" method="POST">
+        {% csrf_token %}
+        <div class="formbold-input-wrapp formbold-mb-3">
+          <label for="sex" class="formbold-form-label" style="color:#872936;"><b>Enter Patient Sex</b> </label>
+          <div>
+            <input
+              type="number"
+              min="0"
+              max="1"
+              name="sex"
+              id="sex"
+              placeholder="1=For Male And 0=For Female"
+              class="formbold-form-input"
+            />
+          </div>
+        </div>
+  
+        <div class="formbold-mb-3">
+          <label class="formbold-form-label" style="color:#872936;"><b> Chest Pain Type</b> </label>
+        <!--  <input
+            type="number"
+            min="1"
+            max="4"
+            name="cp"
+            id="cp"
+            placeholder="1:Typical Angina,2:Atypical Angina,3:Non-Anginal,4:Asymptomatic"
+            class="formbold-form-input"
+          />-->
+          <select class="formbold-form-input" name="cp" id="cp">
+            <option value=0>0=Typical Angina</option>
+            <option value=1>1=Atypical Angina</option>
+            <option value=2>2=Non-Anginal Pain</option>
+            <option value=3>3=Asymptomatic</option>
+          </select>
+        </div>
+        <div class="formbold-mb-3">
+          <label class="formbold-form-label" style="color:#872936;"><b> Resting Electrocardiographic Results</b> </label>
+         <!-- <input
+            type="number"
+            name="cp"
+            id="cp"
+            placeholder="0:Normal,1:Having ST-T Wave Abnormality,2:Showing Probable or Definite Left Ventricular Hypertrophy By Estes' Criteria"
+            class="formbold-form-input"
+          />-->
+          <select class="formbold-form-input" name="restecg" id="restecg">
+            <option value=0>0=Normal</option>
+            <option value=1>1=Having ST-T Wave Abnormality</option>
+            <option value=2>2=Showing Probable or Definite Left Ventricular Hypertrophy By Estes' Criteria</option>
+          </select>
+        </div>
+  
+  
+        <div class="formbold-mb-3">
+          <label class="formbold-form-label" style="color:#872936;"><b>Exercise Induced Angina</b></label>
+  
+          <select class="formbold-form-input" name="exang" id="exang">
+            <option value=0>No</option>
+            <option value=1>yes</option>
+          </select>
+        </div>
+  
+        <div class="formbold-mb-3">
+          <label for="oldpeak" class="formbold-form-label" style="color:#872936;"><b> ST depression Induced By Exercise Relative To Rest</b></label>
+          <input
+            type="number"
+            min="0"
+            max="6.5"
+            step="0.1"
+            name="oldpeak"
+            id="oldpeak"
+            class="formbold-form-input"
+          />
+        </div>
+        <div class="formbold-mb-3">
+          <label class="formbold-form-label" style="color:#872936;"><b>The Slope Of The Peak Exercise ST Segment</b></label>
+  
+          <select class="formbold-form-input" name="slope" id="slope">
+            <option value=0>0=Upsolping</option>
+            <option value=1>1=Flat</option>
+            <option value=2>2=Downsloping</option>
+          </select>
+        </div>
+        <div class="formbold-mb-3">
+          <label for="ca" class="formbold-form-label" style="color:#872936;"><b>Number Of Major Vessels Colored By Flourosopy</b></label>
+          <input
+            type="number"
+            min="0"
+            max="4"
+            name="ca"
+            id="ca"
+            class="formbold-form-input"
+          />
+        </div>
+        <div class="formbold-mb-3">
+          <label class="formbold-form-label" style="color:#872936;"><b>Thalassemia</b></label>
+  
+          <select class="formbold-form-input" name="thal" id="thal">
+            <option value=0>0=Null</option>
+            <option value=1>1=Normal</option>
+            <option value=2>2=Fixed Defect</option>
+            <option value=3>3=Reversable Defect</option>
+          </select>
+        </div>
+        <div class="formbold-mb-3">
+          <label for="fbs" class="formbold-form-label" style="color:#872936;"><b>Fasting Blood Sugar(> 120 mg/dl)</b></label>
+          <input
+            type="number"
+            min="0"
+            max="1"
+            name="fbs"
+            id="fbs"
+            placeholder="1=Yes And 0=No"
+            class="formbold-form-input"
+          />
+        </div>
+        <div class="formbold-mb-3">
+          <label for="thalach" class="formbold-form-label" style="color:#872936;"><b>Maximum Heart Rate Achieved</b></label>
+          <input
+            type="number"
+            min="71"
+            max="202"
+            name="thalach"
+            id="thalach"
+            class="formbold-form-input"
+          />
+        </div>
+        <button class="formbold-btn">Submit</button>
+      </form>
+    </div>
+  </div>
+  {%block body%}{%endblock body%}
+</body>
+</html>
